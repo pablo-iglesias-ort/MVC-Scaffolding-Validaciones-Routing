@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using MVC_Scaffolding_Validaciones_Routing.Data;
 
 namespace MVC_Scaffolding_Validaciones_Routing
 {
@@ -23,6 +25,9 @@ namespace MVC_Scaffolding_Validaciones_Routing
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+
+		    services.AddDbContext<MVC_Scaffolding_Validaciones_RoutingContext>(options =>
+		            options.UseSqlServer(Configuration.GetConnectionString("MVC_Scaffolding_Validaciones_RoutingContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
